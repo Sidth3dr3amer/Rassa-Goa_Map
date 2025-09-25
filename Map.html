@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_aeaf816e71e1eb16e467c465b75ec303 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+</head>
+<body>
+    
+    
+<div style="
+    position: fixed; 
+    top: 10px; 
+    right: 10px; 
+    width: 280px; 
+    height: auto; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    z-index: 9999; 
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: white;
+    padding: 20px;
+">
+    <div style="text-align: center; margin-bottom: 15px;">
+        <h3 style="margin: 0; font-size: 18px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            🌶️ CURRIFY SUPPLY CHAIN
+        </h3>
+        <hr style="border: 1px solid rgba(255,255,255,0.3); margin: 10px 0;">
+    </div>
+    
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa fa-leaf" style="color: #4CAF50; font-size: 16px; width: 20px;"></i>
+            <span style="font-size: 13px;">Spice Farms (10)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa fa-utensils" style="color: #FF9800; font-size: 16px; width: 20px;"></i>
+            <span style="font-size: 13px;">Micro-Kitchens (6)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa fa-box" style="color: #2196F3; font-size: 16px; width: 20px;"></i>
+            <span style="font-size: 13px;">Packaging Centers (2)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa fa-flask" style="color: #F44336; font-size: 16px; width: 20px;"></i>
+            <span style="font-size: 13px;">Quality Labs (2)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa fa-warehouse" style="color: #9C27B0; font-size: 16px; width: 20px;"></i>
+            <span style="font-size: 13px;">Warehouses (1)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa fa-truck" style="color: #1565C0; font-size: 16px; width: 20px;"></i>
+            <span style="font-size: 13px;">EV Hubs (1)</span>
+        </div>
+        <hr style="border: 1px solid rgba(255,255,255,0.3); margin: 10px 0;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 20px; height: 3px; background: #FF4444; border-radius: 2px;"></div>
+            <span style="font-size: 13px;">Supply Chain Route</span>
+        </div>
+    </div>
+    
+    <div style="margin-top: 15px; font-size: 11px; text-align: center; opacity: 0.8;">
+        Total Network: 22 Locations<br>
+        Coverage: Goa → Mumbai (NH66)
+    </div>
+</div>
+    
+<div style="
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: rgba(255,255,255,0.95);
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 9998;
+    font-family: 'Segoe UI', Arial, sans-serif;
+">
+    <h2 style="margin: 0; color: #333; font-size: 24px;">
+        🌶️ Currify Supply Chain Network
+    </h2>
+    <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">
+        From Farm to Fork • Goa to Mumbai Corridor
+    </p>
+</div>
+    
+<style>
+    .leaflet-container {
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .leaflet-popup-content-wrapper {
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+    .leaflet-popup-tip {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+</style>
+    
+            <div class="folium-map" id="map_aeaf816e71e1eb16e467c465b75ec303" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_aeaf816e71e1eb16e467c465b75ec303 = L.map(
+                "map_aeaf816e71e1eb16e467c465b75ec303",
+                {
+                    center: [16.5, 73.8],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6532fbb7812bf817e58b0c40801e4fd4 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "Currify Supply Chain Network",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6532fbb7812bf817e58b0c40801e4fd4.addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var marker_64ea3fc5cbae45f9b8b042c0a1c95e7f = L.marker(
+                [15.3956, 74.0486],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_4599c3e7e3e09d4833c26ece32341f29 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_161e7da245d0469f8305085bccb5b880 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_936713c4621c7050929d4d93b503bb35 = $(`<div id="html_936713c4621c7050929d4d93b503bb35" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Sahakari Spice Farm         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 500kg/day</p>         <p><strong>Coordinates:</strong> 15.3956, 74.0486</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_161e7da245d0469f8305085bccb5b880.setContent(html_936713c4621c7050929d4d93b503bb35);
+            
+        
+
+        marker_64ea3fc5cbae45f9b8b042c0a1c95e7f.bindPopup(popup_161e7da245d0469f8305085bccb5b880)
+        ;
+
+        
+    
+    
+            marker_64ea3fc5cbae45f9b8b042c0a1c95e7f.bindTooltip(
+                `<div>
+                     Sahakari Spice Farm (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_64ea3fc5cbae45f9b8b042c0a1c95e7f.setIcon(icon_4599c3e7e3e09d4833c26ece32341f29);
+            
+    
+            var marker_ea68debf86bb60a28e21821525ec8abd = L.marker(
+                [15.3956, 74.0486],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_278c977ae0cca910d3ac85b3980c8b4b = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Sahakari Spice Farm\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_ea68debf86bb60a28e21821525ec8abd.setIcon(div_icon_278c977ae0cca910d3ac85b3980c8b4b);
+            
+    
+            var marker_01d54230d479d12584b4c017671f898e = L.marker(
+                [15.2993, 74.124],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_25c78c1b0b15917f146338a12f238ae3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2bc29385f95e9cd9a796c12e74d576b8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1ce2d0c8fbc4d697f5b318eaaf1dbc5a = $(`<div id="html_1ce2d0c8fbc4d697f5b318eaaf1dbc5a" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Tropical Spice Plantation         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 750kg/day</p>         <p><strong>Coordinates:</strong> 15.2993, 74.1240</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_2bc29385f95e9cd9a796c12e74d576b8.setContent(html_1ce2d0c8fbc4d697f5b318eaaf1dbc5a);
+            
+        
+
+        marker_01d54230d479d12584b4c017671f898e.bindPopup(popup_2bc29385f95e9cd9a796c12e74d576b8)
+        ;
+
+        
+    
+    
+            marker_01d54230d479d12584b4c017671f898e.bindTooltip(
+                `<div>
+                     Tropical Spice Plantation (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_01d54230d479d12584b4c017671f898e.setIcon(icon_25c78c1b0b15917f146338a12f238ae3);
+            
+    
+            var marker_d4da5cf4f60f479622982c186068fca3 = L.marker(
+                [15.2993, 74.124],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_70ddf81aedac195ee849403aeb14d0df = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Tropical Spice Plantation\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_d4da5cf4f60f479622982c186068fca3.setIcon(div_icon_70ddf81aedac195ee849403aeb14d0df);
+            
+    
+            var marker_c626788e4b4e60ca1160e17586c152c6 = L.marker(
+                [15.3995, 74.0485],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_6f433b4eeff182b6d8cbe73b2b0b8981 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67a569b93b2cf77a9b2df737f96f6dc6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bdb83ce62868ade24734bb0079772144 = $(`<div id="html_bdb83ce62868ade24734bb0079772144" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Savoi Plantation         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 600kg/day</p>         <p><strong>Coordinates:</strong> 15.3995, 74.0485</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_67a569b93b2cf77a9b2df737f96f6dc6.setContent(html_bdb83ce62868ade24734bb0079772144);
+            
+        
+
+        marker_c626788e4b4e60ca1160e17586c152c6.bindPopup(popup_67a569b93b2cf77a9b2df737f96f6dc6)
+        ;
+
+        
+    
+    
+            marker_c626788e4b4e60ca1160e17586c152c6.bindTooltip(
+                `<div>
+                     Savoi Plantation (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c626788e4b4e60ca1160e17586c152c6.setIcon(icon_6f433b4eeff182b6d8cbe73b2b0b8981);
+            
+    
+            var marker_2a32760bed6112e43a522a2f8dc0b92c = L.marker(
+                [15.3995, 74.0485],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_f315fcd4f7c867bdfb7ef3f585fd9eb9 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Savoi Plantation\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_2a32760bed6112e43a522a2f8dc0b92c.setIcon(div_icon_f315fcd4f7c867bdfb7ef3f585fd9eb9);
+            
+    
+            var marker_a61a0be67948dc931682a63bb3b0f215 = L.marker(
+                [15.3833, 74.0486],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_576893806b90f85c3bca56688e7dd7c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ee1db55266c346f230813b6dad121046 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9e6c99ec9faede52ac618a567f7b9066 = $(`<div id="html_9e6c99ec9faede52ac618a567f7b9066" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Pascoal Spice Village         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 400kg/day</p>         <p><strong>Coordinates:</strong> 15.3833, 74.0486</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_ee1db55266c346f230813b6dad121046.setContent(html_9e6c99ec9faede52ac618a567f7b9066);
+            
+        
+
+        marker_a61a0be67948dc931682a63bb3b0f215.bindPopup(popup_ee1db55266c346f230813b6dad121046)
+        ;
+
+        
+    
+    
+            marker_a61a0be67948dc931682a63bb3b0f215.bindTooltip(
+                `<div>
+                     Pascoal Spice Village (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a61a0be67948dc931682a63bb3b0f215.setIcon(icon_576893806b90f85c3bca56688e7dd7c3);
+            
+    
+            var marker_78e39ea3bf4733ec3ca9b246744251a5 = L.marker(
+                [15.3833, 74.0486],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_fcd239b4d8908e4270d4bd9327f1d5e1 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Pascoal Spice Village\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_78e39ea3bf4733ec3ca9b246744251a5.setIcon(div_icon_fcd239b4d8908e4270d4bd9327f1d5e1);
+            
+    
+            var marker_4c831b4fe76c26c0eb2ade93bcb0f7d5 = L.marker(
+                [15.19, 74.06],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_27c4e919e2a3474df97699be48006144 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aa18f3c944df367e1d8470ce88614c81 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_75d07f2df06a29fdcdd2f7e9037d085e = $(`<div id="html_75d07f2df06a29fdcdd2f7e9037d085e" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Tanshikar Spice Farm         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 300kg/day</p>         <p><strong>Coordinates:</strong> 15.1900, 74.0600</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_aa18f3c944df367e1d8470ce88614c81.setContent(html_75d07f2df06a29fdcdd2f7e9037d085e);
+            
+        
+
+        marker_4c831b4fe76c26c0eb2ade93bcb0f7d5.bindPopup(popup_aa18f3c944df367e1d8470ce88614c81)
+        ;
+
+        
+    
+    
+            marker_4c831b4fe76c26c0eb2ade93bcb0f7d5.bindTooltip(
+                `<div>
+                     Tanshikar Spice Farm (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4c831b4fe76c26c0eb2ade93bcb0f7d5.setIcon(icon_27c4e919e2a3474df97699be48006144);
+            
+    
+            var marker_8a861466ae8566ec1c0179b0a8257e58 = L.marker(
+                [15.19, 74.06],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_c85d8e711025dcbb179f9c667dae555c = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Tanshikar Spice Farm\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_8a861466ae8566ec1c0179b0a8257e58.setIcon(div_icon_c85d8e711025dcbb179f9c667dae555c);
+            
+    
+            var marker_800b798ddcbbfa7f55d9d17716adde4f = L.marker(
+                [15.4936, 73.8031],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_e6e77de2fc56910ac44987a100de6603 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c41e3acfc8648388d84f4c23ada5a45b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ca60a81831255d98187cdd6881487ccf = $(`<div id="html_ca60a81831255d98187cdd6881487ccf" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Dona Paula Spice Garden         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 200kg/day</p>         <p><strong>Coordinates:</strong> 15.4936, 73.8031</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_c41e3acfc8648388d84f4c23ada5a45b.setContent(html_ca60a81831255d98187cdd6881487ccf);
+            
+        
+
+        marker_800b798ddcbbfa7f55d9d17716adde4f.bindPopup(popup_c41e3acfc8648388d84f4c23ada5a45b)
+        ;
+
+        
+    
+    
+            marker_800b798ddcbbfa7f55d9d17716adde4f.bindTooltip(
+                `<div>
+                     Dona Paula Spice Garden (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_800b798ddcbbfa7f55d9d17716adde4f.setIcon(icon_e6e77de2fc56910ac44987a100de6603);
+            
+    
+            var marker_79eba258bb7f95a58d1072128719a8e8 = L.marker(
+                [15.4936, 73.8031],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_f3617443252f43cfdae000a1b152d48d = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Dona Paula Spice Garden\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_79eba258bb7f95a58d1072128719a8e8.setIcon(div_icon_f3617443252f43cfdae000a1b152d48d);
+            
+    
+            var marker_1b7a2e7515fd254ca476548019686ad1 = L.marker(
+                [15.55, 73.8],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_01cf349627fe070b822db992340165f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_08a5e52e50d2f03ef2a371629aa19fc2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2600ca74aeb9c7a13e793c7fe6b61174 = $(`<div id="html_2600ca74aeb9c7a13e793c7fe6b61174" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Anjuna Spice Garden         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 350kg/day</p>         <p><strong>Coordinates:</strong> 15.5500, 73.8000</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_08a5e52e50d2f03ef2a371629aa19fc2.setContent(html_2600ca74aeb9c7a13e793c7fe6b61174);
+            
+        
+
+        marker_1b7a2e7515fd254ca476548019686ad1.bindPopup(popup_08a5e52e50d2f03ef2a371629aa19fc2)
+        ;
+
+        
+    
+    
+            marker_1b7a2e7515fd254ca476548019686ad1.bindTooltip(
+                `<div>
+                     Anjuna Spice Garden (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1b7a2e7515fd254ca476548019686ad1.setIcon(icon_01cf349627fe070b822db992340165f8);
+            
+    
+            var marker_beb5ecf19f521eb49fd86508bf72ea90 = L.marker(
+                [15.55, 73.8],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_01dcb222cacbbc5e36a64fd1093709a4 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Anjuna Spice Garden\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_beb5ecf19f521eb49fd86508bf72ea90.setIcon(div_icon_01dcb222cacbbc5e36a64fd1093709a4);
+            
+    
+            var marker_d1fcee63f1783b77c48f0d1d39c560d2 = L.marker(
+                [15.56, 73.83],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_9eeba2dd92f56e1b28d5d5d6f41f6af0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6457923e0b5091e69586a5f5b52f071 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5fecc7ae44382cbd8d851ba7665ca0bf = $(`<div id="html_5fecc7ae44382cbd8d851ba7665ca0bf" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Assagao Spice Farm         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 450kg/day</p>         <p><strong>Coordinates:</strong> 15.5600, 73.8300</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_e6457923e0b5091e69586a5f5b52f071.setContent(html_5fecc7ae44382cbd8d851ba7665ca0bf);
+            
+        
+
+        marker_d1fcee63f1783b77c48f0d1d39c560d2.bindPopup(popup_e6457923e0b5091e69586a5f5b52f071)
+        ;
+
+        
+    
+    
+            marker_d1fcee63f1783b77c48f0d1d39c560d2.bindTooltip(
+                `<div>
+                     Assagao Spice Farm (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d1fcee63f1783b77c48f0d1d39c560d2.setIcon(icon_9eeba2dd92f56e1b28d5d5d6f41f6af0);
+            
+    
+            var marker_1737cd377314d0939a475896e095ef8d = L.marker(
+                [15.56, 73.83],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_51cae33830c03ac34a5ca3c3120145bf = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Assagao Spice Farm\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_1737cd377314d0939a475896e095ef8d.setIcon(div_icon_51cae33830c03ac34a5ca3c3120145bf);
+            
+    
+            var marker_db11b848314e9b4629c466df9bd3d6cd = L.marker(
+                [15.57, 73.83],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_354d9e2502d96189df6c63e8dacadf23 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_26d294606f279c1dd5a3be32fb17cf12 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8ec502d74ca6d65903b7800f15e82e4b = $(`<div id="html_8ec502d74ca6d65903b7800f15e82e4b" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Mapusa Spice Plantation         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 300kg/day</p>         <p><strong>Coordinates:</strong> 15.5700, 73.8300</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_26d294606f279c1dd5a3be32fb17cf12.setContent(html_8ec502d74ca6d65903b7800f15e82e4b);
+            
+        
+
+        marker_db11b848314e9b4629c466df9bd3d6cd.bindPopup(popup_26d294606f279c1dd5a3be32fb17cf12)
+        ;
+
+        
+    
+    
+            marker_db11b848314e9b4629c466df9bd3d6cd.bindTooltip(
+                `<div>
+                     Mapusa Spice Plantation (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_db11b848314e9b4629c466df9bd3d6cd.setIcon(icon_354d9e2502d96189df6c63e8dacadf23);
+            
+    
+            var marker_f6b205121c8541e759b9df64f697b9cc = L.marker(
+                [15.57, 73.83],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_8912a8d3d5c651359a13e63605da6f94 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Mapusa Spice Plantation\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_f6b205121c8541e759b9df64f697b9cc.setIcon(div_icon_8912a8d3d5c651359a13e63605da6f94);
+            
+    
+            var marker_9f8927d3fb5fb3d5dc07c4d703efce60 = L.marker(
+                [15.58, 73.84],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_d6529fe27add49c6c4e3c71c037c5cf1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9dcb1290c7002f4a0d3dd93f31d78432 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_768ca60e45328a9ee038e24c262ea05f = $(`<div id="html_768ca60e45328a9ee038e24c262ea05f" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: green; margin-bottom: 10px; text-align: center;">             <i class="fa fa-leaf"></i> Colvale Spice Farm         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Farm</p>         <p><strong>Capacity:</strong> 250kg/day</p>         <p><strong>Coordinates:</strong> 15.5800, 73.8400</p>         <p><em>Spice Farms - Raw Material Sources</em></p>     </div>     </div>`)[0];
+                popup_9dcb1290c7002f4a0d3dd93f31d78432.setContent(html_768ca60e45328a9ee038e24c262ea05f);
+            
+        
+
+        marker_9f8927d3fb5fb3d5dc07c4d703efce60.bindPopup(popup_9dcb1290c7002f4a0d3dd93f31d78432)
+        ;
+
+        
+    
+    
+            marker_9f8927d3fb5fb3d5dc07c4d703efce60.bindTooltip(
+                `<div>
+                     Colvale Spice Farm (Farm)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9f8927d3fb5fb3d5dc07c4d703efce60.setIcon(icon_d6529fe27add49c6c4e3c71c037c5cf1);
+            
+    
+            var marker_2c4d9b39c2385b53fb4139f54065fc29 = L.marker(
+                [15.58, 73.84],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_6083e5d7bff0dfe5bc1a67720eb2664e = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid green;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: green;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Colvale Spice Farm\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_2c4d9b39c2385b53fb4139f54065fc29.setIcon(div_icon_6083e5d7bff0dfe5bc1a67720eb2664e);
+            
+    
+            var marker_17bc61bfcfd8fca4766ea1635cab65bf = L.marker(
+                [15.4909, 73.8278],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_63088b2ec31faf39c4a34dba790aeea0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "utensils",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_92a1bbb470e0b0b4d51fd198dc8dc08c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f3fe874cb40dd539789b5da2992c6056 = $(`<div id="html_f3fe874cb40dd539789b5da2992c6056" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: orange; margin-bottom: 10px; text-align: center;">             <i class="fa fa-utensils"></i> Simis Micro Kitchen         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Kitchen</p>         <p><strong>Capacity:</strong> 200 meals/day</p>         <p><strong>Coordinates:</strong> 15.4909, 73.8278</p>         <p><em>Micro-Kitchens - Food Processing Units</em></p>     </div>     </div>`)[0];
+                popup_92a1bbb470e0b0b4d51fd198dc8dc08c.setContent(html_f3fe874cb40dd539789b5da2992c6056);
+            
+        
+
+        marker_17bc61bfcfd8fca4766ea1635cab65bf.bindPopup(popup_92a1bbb470e0b0b4d51fd198dc8dc08c)
+        ;
+
+        
+    
+    
+            marker_17bc61bfcfd8fca4766ea1635cab65bf.bindTooltip(
+                `<div>
+                     Simis Micro Kitchen (Kitchen)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_17bc61bfcfd8fca4766ea1635cab65bf.setIcon(icon_63088b2ec31faf39c4a34dba790aeea0);
+            
+    
+            var marker_2d741ab751b974653cb31a942c13998c = L.marker(
+                [15.4909, 73.8278],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_44bf111e2ed7fadfffd746a06663a024 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid orange;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: orange;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Simis Micro Kitchen\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_2d741ab751b974653cb31a942c13998c.setIcon(div_icon_44bf111e2ed7fadfffd746a06663a024);
+            
+    
+            var marker_7dbef9c79706a096e30e630d9950d059 = L.marker(
+                [15.55, 73.8],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_cde63ce07e9bd365d50fbbf85620b083 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "utensils",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_69387381cbdd9b9792229af216aeea78 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0cc4ff45043b94b67d5aa2c5ec31e79f = $(`<div id="html_0cc4ff45043b94b67d5aa2c5ec31e79f" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: orange; margin-bottom: 10px; text-align: center;">             <i class="fa fa-utensils"></i> Mimi's Kitchen & Bar         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Kitchen</p>         <p><strong>Capacity:</strong> 150 meals/day</p>         <p><strong>Coordinates:</strong> 15.5500, 73.8000</p>         <p><em>Micro-Kitchens - Food Processing Units</em></p>     </div>     </div>`)[0];
+                popup_69387381cbdd9b9792229af216aeea78.setContent(html_0cc4ff45043b94b67d5aa2c5ec31e79f);
+            
+        
+
+        marker_7dbef9c79706a096e30e630d9950d059.bindPopup(popup_69387381cbdd9b9792229af216aeea78)
+        ;
+
+        
+    
+    
+            marker_7dbef9c79706a096e30e630d9950d059.bindTooltip(
+                `<div>
+                     Mimi's Kitchen & Bar (Kitchen)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7dbef9c79706a096e30e630d9950d059.setIcon(icon_cde63ce07e9bd365d50fbbf85620b083);
+            
+    
+            var marker_2f238da64b3d6a601358b8f60a343196 = L.marker(
+                [15.55, 73.8],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_615679383d3eaadb99b4e40446e9dcc1 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid orange;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: orange;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Mimi\u0027s Kitchen \u0026 Bar\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_2f238da64b3d6a601358b8f60a343196.setIcon(div_icon_615679383d3eaadb99b4e40446e9dcc1);
+            
+    
+            var marker_022703bd74f623cae46998f7f354e004 = L.marker(
+                [15.54, 73.82],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_7179bd95a152132faead1178c6a9d704 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "utensils",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4b7d12dfd1b9d277e97b4379bafb3f0d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3c70fecccde3ce2ef9bfb48fda19d114 = $(`<div id="html_3c70fecccde3ce2ef9bfb48fda19d114" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: orange; margin-bottom: 10px; text-align: center;">             <i class="fa fa-utensils"></i> NickyM's Kitchen         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Kitchen</p>         <p><strong>Capacity:</strong> 180 meals/day</p>         <p><strong>Coordinates:</strong> 15.5400, 73.8200</p>         <p><em>Micro-Kitchens - Food Processing Units</em></p>     </div>     </div>`)[0];
+                popup_4b7d12dfd1b9d277e97b4379bafb3f0d.setContent(html_3c70fecccde3ce2ef9bfb48fda19d114);
+            
+        
+
+        marker_022703bd74f623cae46998f7f354e004.bindPopup(popup_4b7d12dfd1b9d277e97b4379bafb3f0d)
+        ;
+
+        
+    
+    
+            marker_022703bd74f623cae46998f7f354e004.bindTooltip(
+                `<div>
+                     NickyM's Kitchen (Kitchen)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_022703bd74f623cae46998f7f354e004.setIcon(icon_7179bd95a152132faead1178c6a9d704);
+            
+    
+            var marker_ac219984ca703a0a603b1637f3faccb5 = L.marker(
+                [15.54, 73.82],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_4e5e3fe545dd0d6c19daef42cde8867b = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid orange;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: orange;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                NickyM\u0027s Kitchen\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_ac219984ca703a0a603b1637f3faccb5.setIcon(div_icon_4e5e3fe545dd0d6c19daef42cde8867b);
+            
+    
+            var marker_f77e2c405804297f5f8548091fc2c674 = L.marker(
+                [15.397, 73.815],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_d991eb5611bedb38f22823c07703f35c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "utensils",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d098b21fdf7dd733686c2dcc2713c783 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f85afa1b7d4a418afd9c74c995e3f464 = $(`<div id="html_f85afa1b7d4a418afd9c74c995e3f464" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: orange; margin-bottom: 10px; text-align: center;">             <i class="fa fa-utensils"></i> Goa Kitchen         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Kitchen</p>         <p><strong>Capacity:</strong> 300 meals/day</p>         <p><strong>Coordinates:</strong> 15.3970, 73.8150</p>         <p><em>Micro-Kitchens - Food Processing Units</em></p>     </div>     </div>`)[0];
+                popup_d098b21fdf7dd733686c2dcc2713c783.setContent(html_f85afa1b7d4a418afd9c74c995e3f464);
+            
+        
+
+        marker_f77e2c405804297f5f8548091fc2c674.bindPopup(popup_d098b21fdf7dd733686c2dcc2713c783)
+        ;
+
+        
+    
+    
+            marker_f77e2c405804297f5f8548091fc2c674.bindTooltip(
+                `<div>
+                     Goa Kitchen (Kitchen)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f77e2c405804297f5f8548091fc2c674.setIcon(icon_d991eb5611bedb38f22823c07703f35c);
+            
+    
+            var marker_1f7fd21da5fe27e25c11f133eba19365 = L.marker(
+                [15.397, 73.815],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_0de6a7ba58cd37c1cfe170aa097578e1 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid orange;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: orange;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Goa Kitchen\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_1f7fd21da5fe27e25c11f133eba19365.setIcon(div_icon_0de6a7ba58cd37c1cfe170aa097578e1);
+            
+    
+            var marker_e28ae3cce3e0969690508b8e9e2f1623 = L.marker(
+                [15.56, 73.82],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_805885cdad17ed0279f1dae904cc3bab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "utensils",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6977f3ac5f5e0afeccb38c35a7224a75 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ffe1d71275677dbf701d11829e97c543 = $(`<div id="html_ffe1d71275677dbf701d11829e97c543" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: orange; margin-bottom: 10px; text-align: center;">             <i class="fa fa-utensils"></i> Spice Kitchen         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Kitchen</p>         <p><strong>Capacity:</strong> 250 meals/day</p>         <p><strong>Coordinates:</strong> 15.5600, 73.8200</p>         <p><em>Micro-Kitchens - Food Processing Units</em></p>     </div>     </div>`)[0];
+                popup_6977f3ac5f5e0afeccb38c35a7224a75.setContent(html_ffe1d71275677dbf701d11829e97c543);
+            
+        
+
+        marker_e28ae3cce3e0969690508b8e9e2f1623.bindPopup(popup_6977f3ac5f5e0afeccb38c35a7224a75)
+        ;
+
+        
+    
+    
+            marker_e28ae3cce3e0969690508b8e9e2f1623.bindTooltip(
+                `<div>
+                     Spice Kitchen (Kitchen)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e28ae3cce3e0969690508b8e9e2f1623.setIcon(icon_805885cdad17ed0279f1dae904cc3bab);
+            
+    
+            var marker_67791531555cdfbea198460e42442f78 = L.marker(
+                [15.56, 73.82],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_abfe67b957e4f92871c37dca36c5786a = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid orange;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: orange;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Spice Kitchen\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_67791531555cdfbea198460e42442f78.setIcon(div_icon_abfe67b957e4f92871c37dca36c5786a);
+            
+    
+            var marker_e8c6d2348ef01bb292e90317c5dc2586 = L.marker(
+                [15.62, 73.95],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_683999517be51d18b7e96965f18bb323 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "box",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_23533a51d2fd3e40296192a12981a4ed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_62cc45cbb48d7e9e0d86b086b0e47f04 = $(`<div id="html_62cc45cbb48d7e9e0d86b086b0e47f04" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: blue; margin-bottom: 10px; text-align: center;">             <i class="fa fa-box"></i> GIDC Food Park         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Packaging</p>         <p><strong>Capacity:</strong> 2000 units/day</p>         <p><strong>Coordinates:</strong> 15.6200, 73.9500</p>         <p><em>Packaging Centers - Product Finishing</em></p>     </div>     </div>`)[0];
+                popup_23533a51d2fd3e40296192a12981a4ed.setContent(html_62cc45cbb48d7e9e0d86b086b0e47f04);
+            
+        
+
+        marker_e8c6d2348ef01bb292e90317c5dc2586.bindPopup(popup_23533a51d2fd3e40296192a12981a4ed)
+        ;
+
+        
+    
+    
+            marker_e8c6d2348ef01bb292e90317c5dc2586.bindTooltip(
+                `<div>
+                     GIDC Food Park (Packaging)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e8c6d2348ef01bb292e90317c5dc2586.setIcon(icon_683999517be51d18b7e96965f18bb323);
+            
+    
+            var marker_16fc8f5fb121443e28d699012e9a4717 = L.marker(
+                [15.62, 73.95],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_d56c75a097f4c6b1405f185a58715af8 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid blue;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: blue;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                GIDC Food Park\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_16fc8f5fb121443e28d699012e9a4717.setIcon(div_icon_d56c75a097f4c6b1405f185a58715af8);
+            
+    
+            var marker_708554a0d818b5069948c0637f89f039 = L.marker(
+                [15.38, 73.9],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_76ba74e98a339326c85520c20bce5893 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "box",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_745153ea7d2fd00c0855e9b58fe0ad7f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_293c727e46172190b5cfea6c53c77dee = $(`<div id="html_293c727e46172190b5cfea6c53c77dee" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: blue; margin-bottom: 10px; text-align: center;">             <i class="fa fa-box"></i> Verna Industrial Estate         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Packaging</p>         <p><strong>Capacity:</strong> 1500 units/day</p>         <p><strong>Coordinates:</strong> 15.3800, 73.9000</p>         <p><em>Packaging Centers - Product Finishing</em></p>     </div>     </div>`)[0];
+                popup_745153ea7d2fd00c0855e9b58fe0ad7f.setContent(html_293c727e46172190b5cfea6c53c77dee);
+            
+        
+
+        marker_708554a0d818b5069948c0637f89f039.bindPopup(popup_745153ea7d2fd00c0855e9b58fe0ad7f)
+        ;
+
+        
+    
+    
+            marker_708554a0d818b5069948c0637f89f039.bindTooltip(
+                `<div>
+                     Verna Industrial Estate (Packaging)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_708554a0d818b5069948c0637f89f039.setIcon(icon_76ba74e98a339326c85520c20bce5893);
+            
+    
+            var marker_6d3f5e25bbcfa25c84e177cbfe76793e = L.marker(
+                [15.38, 73.9],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_0abfbfcd7543929a33f4b7b5475703f0 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid blue;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: blue;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Verna Industrial Estate\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_6d3f5e25bbcfa25c84e177cbfe76793e.setIcon(div_icon_0abfbfcd7543929a33f4b7b5475703f0);
+            
+    
+            var marker_40d64e373aefa15c8d5b90454cc235e4 = L.marker(
+                [15.4909, 73.8278],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_79f66e0509b5f31c601d1b5da7c52a9b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "flask",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_790c528d85e26257649c495ff73b6042 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0235c7e688a46e9c733285486476b9e0 = $(`<div id="html_0235c7e688a46e9c733285486476b9e0" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: red; margin-bottom: 10px; text-align: center;">             <i class="fa fa-flask"></i> Italab Pvt Ltd         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Lab</p>         <p><strong>Capacity:</strong> 50 tests/day</p>         <p><strong>Coordinates:</strong> 15.4909, 73.8278</p>         <p><em>Quality Control Labs</em></p>     </div>     </div>`)[0];
+                popup_790c528d85e26257649c495ff73b6042.setContent(html_0235c7e688a46e9c733285486476b9e0);
+            
+        
+
+        marker_40d64e373aefa15c8d5b90454cc235e4.bindPopup(popup_790c528d85e26257649c495ff73b6042)
+        ;
+
+        
+    
+    
+            marker_40d64e373aefa15c8d5b90454cc235e4.bindTooltip(
+                `<div>
+                     Italab Pvt Ltd (Lab)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_40d64e373aefa15c8d5b90454cc235e4.setIcon(icon_79f66e0509b5f31c601d1b5da7c52a9b);
+            
+    
+            var marker_54702f0eac844725c1b2ae21c2e30e11 = L.marker(
+                [15.4909, 73.8278],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_31c69ec1a61c30e1319c1b1307d8748f = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid red;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: red;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Italab Pvt Ltd\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_54702f0eac844725c1b2ae21c2e30e11.setIcon(div_icon_31c69ec1a61c30e1319c1b1307d8748f);
+            
+    
+            var marker_b7798149a5a79b6e002d2d1ce4518b9c = L.marker(
+                [15.397, 73.815],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_04d70802b6c4f22be044dee5bc3d672b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "flask",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ca88ac2031523e54bf43260b3a8fa5a5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3cfbd3e841d433ff493fa924384d92b5 = $(`<div id="html_3cfbd3e841d433ff493fa924384d92b5" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: red; margin-bottom: 10px; text-align: center;">             <i class="fa fa-flask"></i> Envirocare Labs         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Lab</p>         <p><strong>Capacity:</strong> 75 tests/day</p>         <p><strong>Coordinates:</strong> 15.3970, 73.8150</p>         <p><em>Quality Control Labs</em></p>     </div>     </div>`)[0];
+                popup_ca88ac2031523e54bf43260b3a8fa5a5.setContent(html_3cfbd3e841d433ff493fa924384d92b5);
+            
+        
+
+        marker_b7798149a5a79b6e002d2d1ce4518b9c.bindPopup(popup_ca88ac2031523e54bf43260b3a8fa5a5)
+        ;
+
+        
+    
+    
+            marker_b7798149a5a79b6e002d2d1ce4518b9c.bindTooltip(
+                `<div>
+                     Envirocare Labs (Lab)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b7798149a5a79b6e002d2d1ce4518b9c.setIcon(icon_04d70802b6c4f22be044dee5bc3d672b);
+            
+    
+            var marker_64cc33d46b02b0eaaaf2abbf4c73e97f = L.marker(
+                [15.397, 73.815],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_1d4257c895309b26caf5deeb5e0048be = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid red;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: red;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Envirocare Labs\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_64cc33d46b02b0eaaaf2abbf4c73e97f.setIcon(div_icon_1d4257c895309b26caf5deeb5e0048be);
+            
+    
+            var marker_845f19be08d93d6c3035b4cc87c7b0b3 = L.marker(
+                [19.076, 72.8777],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_67eab9721ad85a4af5b649ba262ab00f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "warehouse",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_404a4666447c534480c168e2fc5c6372 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_afc5ca036921a9ceb0cd080b5c829ed0 = $(`<div id="html_afc5ca036921a9ceb0cd080b5c829ed0" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: purple; margin-bottom: 10px; text-align: center;">             <i class="fa fa-warehouse"></i> Mumbai Metro Warehouse         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Warehouse</p>         <p><strong>Capacity:</strong> 10000 units</p>         <p><strong>Coordinates:</strong> 19.0760, 72.8777</p>         <p><em>Distribution Warehouses</em></p>     </div>     </div>`)[0];
+                popup_404a4666447c534480c168e2fc5c6372.setContent(html_afc5ca036921a9ceb0cd080b5c829ed0);
+            
+        
+
+        marker_845f19be08d93d6c3035b4cc87c7b0b3.bindPopup(popup_404a4666447c534480c168e2fc5c6372)
+        ;
+
+        
+    
+    
+            marker_845f19be08d93d6c3035b4cc87c7b0b3.bindTooltip(
+                `<div>
+                     Mumbai Metro Warehouse (Warehouse)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_845f19be08d93d6c3035b4cc87c7b0b3.setIcon(icon_67eab9721ad85a4af5b649ba262ab00f);
+            
+    
+            var marker_3d36410aebeca61383d9b596c6127aa3 = L.marker(
+                [19.076, 72.8777],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_fad7355d0fbe1053ef5e90a73b38e0ad = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid purple;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: purple;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Mumbai Metro Warehouse\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_3d36410aebeca61383d9b596c6127aa3.setIcon(div_icon_fad7355d0fbe1053ef5e90a73b38e0ad);
+            
+    
+            var marker_0aa390c2e81a9aaf8adfd56b26df3e45 = L.marker(
+                [19.2, 72.85],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_37c46b74448ff9c4923de859ffd78b54 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "utensils",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5844933345b2328773f81eb7cd3709a4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0434d2b46995cf38ab4b2c098d39ecb6 = $(`<div id="html_0434d2b46995cf38ab4b2c098d39ecb6" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: orange; margin-bottom: 10px; text-align: center;">             <i class="fa fa-utensils"></i> Mumbai Micro-Kitchen         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Kitchen</p>         <p><strong>Capacity:</strong> 500 meals/day</p>         <p><strong>Coordinates:</strong> 19.2000, 72.8500</p>         <p><em>Micro-Kitchens - Food Processing Units</em></p>     </div>     </div>`)[0];
+                popup_5844933345b2328773f81eb7cd3709a4.setContent(html_0434d2b46995cf38ab4b2c098d39ecb6);
+            
+        
+
+        marker_0aa390c2e81a9aaf8adfd56b26df3e45.bindPopup(popup_5844933345b2328773f81eb7cd3709a4)
+        ;
+
+        
+    
+    
+            marker_0aa390c2e81a9aaf8adfd56b26df3e45.bindTooltip(
+                `<div>
+                     Mumbai Micro-Kitchen (Kitchen)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0aa390c2e81a9aaf8adfd56b26df3e45.setIcon(icon_37c46b74448ff9c4923de859ffd78b54);
+            
+    
+            var marker_305cfd0efaa02ae3d6b2467ba1767f3a = L.marker(
+                [19.2, 72.85],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_4ca92526e7c15f3998ddea881cf923f9 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid orange;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: orange;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                Mumbai Micro-Kitchen\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_305cfd0efaa02ae3d6b2467ba1767f3a.setIcon(div_icon_4ca92526e7c15f3998ddea881cf923f9);
+            
+    
+            var marker_89e6024bb3e92ece89d166112066bdf1 = L.marker(
+                [19.1, 72.9],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var icon_e051d6a85208895ec4a7d776f213ff25 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "truck",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_55cee4ca2acf6dd4a42c14a5351c0a7e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5d33d6b14b7804bf7d2fe6adb103788c = $(`<div id="html_5d33d6b14b7804bf7d2fe6adb103788c" style="width: 100.0%; height: 100.0%;">     <div style="width: 250px; font-family: Arial, sans-serif;">         <h4 style="color: darkblue; margin-bottom: 10px; text-align: center;">             <i class="fa fa-truck"></i> EV Last-Mile Hub, Mumbai         </h4>         <hr style="margin: 5px 0;">         <p><strong>Type:</strong> Ev_Hub</p>         <p><strong>Capacity:</strong> 100 deliveries/day</p>         <p><strong>Coordinates:</strong> 19.1000, 72.9000</p>         <p><em>Last-Mile Delivery Hubs</em></p>     </div>     </div>`)[0];
+                popup_55cee4ca2acf6dd4a42c14a5351c0a7e.setContent(html_5d33d6b14b7804bf7d2fe6adb103788c);
+            
+        
+
+        marker_89e6024bb3e92ece89d166112066bdf1.bindPopup(popup_55cee4ca2acf6dd4a42c14a5351c0a7e)
+        ;
+
+        
+    
+    
+            marker_89e6024bb3e92ece89d166112066bdf1.bindTooltip(
+                `<div>
+                     EV Last-Mile Hub, Mumbai (Ev_Hub)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_89e6024bb3e92ece89d166112066bdf1.setIcon(icon_e051d6a85208895ec4a7d776f213ff25);
+            
+    
+            var marker_ff00870d34981dd32ae082b8acb701b2 = L.marker(
+                [19.1, 72.9],
+                {
+}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var div_icon_d5164fd5a8c75c36a33e6c310ec55093 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"\n                background: rgba(255,255,255,0.9);\n                border: 2px solid darkblue;\n                border-radius: 15px;\n                padding: 5px 10px;\n                font-size: 11pt;\n                font-weight: bold;\n                color: darkblue;\n                text-align: center;\n                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);\n                white-space: nowrap;\n            \"\u003e\n                EV Last-Mile Hub, Mumbai\n            \u003c/div\u003e\n            ",
+  "iconSize": [200, 40],
+  "iconAnchor": [100, 20],
+  "className": "empty",
+});
+        
+    
+                marker_ff00870d34981dd32ae082b8acb701b2.setIcon(div_icon_d5164fd5a8c75c36a33e6c310ec55093);
+            
+    
+            ant_path_5b9f83884d476d716f4f931a34e7d095 = L.polyline.antPath(
+              [[15.2993, 74.124], [15.4909, 73.8278], [15.62, 73.95], [16.99, 73.3], [17.53, 73.52], [18.5, 73.18], [19.076, 72.8777], [19.1, 72.9]],
+              {
+  "stroke": true,
+  "color": "#FF4444",
+  "weight": 4,
+  "opacity": 0.5,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+10,
+20,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#FF4444",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 2000,
+  "pulseColor": "#FF8888",
+}
+        ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            var circle_marker_908220de1707a2a654bb5cc3db94068c = L.circleMarker(
+                [15.2993, 74.124],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            circle_marker_908220de1707a2a654bb5cc3db94068c.bindTooltip(
+                `<div>
+                     Supply Chain Start
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_79650faaa086995d72a0575166695204 = L.circleMarker(
+                [15.4909, 73.8278],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            circle_marker_79650faaa086995d72a0575166695204.bindTooltip(
+                `<div>
+                     Waypoint 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aebcb319594cdc1fdfe4c671c41d7edc = L.circleMarker(
+                [15.62, 73.95],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            circle_marker_aebcb319594cdc1fdfe4c671c41d7edc.bindTooltip(
+                `<div>
+                     Waypoint 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e4dcbcde1a169f956b5c9c8ba6ce61f5 = L.circleMarker(
+                [16.99, 73.3],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            circle_marker_e4dcbcde1a169f956b5c9c8ba6ce61f5.bindTooltip(
+                `<div>
+                     Waypoint 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7f41a49e3bb62735719c5b6691be611d = L.circleMarker(
+                [17.53, 73.52],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            circle_marker_7f41a49e3bb62735719c5b6691be611d.bindTooltip(
+                `<div>
+                     Waypoint 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fbde40ba08a567a4a1d8f14023edde63 = L.circleMarker(
+                [18.5, 73.18],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            circle_marker_fbde40ba08a567a4a1d8f14023edde63.bindTooltip(
+                `<div>
+                     Waypoint 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6b5a0b068a319130883876446713869a = L.circleMarker(
+                [19.076, 72.8777],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            circle_marker_6b5a0b068a319130883876446713869a.bindTooltip(
+                `<div>
+                     Waypoint 6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6087d29f98905ebe4198143c076cc191 = L.circleMarker(
+                [19.1, 72.9],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_aeaf816e71e1eb16e467c465b75ec303);
+        
+    
+            circle_marker_6087d29f98905ebe4198143c076cc191.bindTooltip(
+                `<div>
+                     Final Destination
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
